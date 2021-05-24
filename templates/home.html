@@ -1,0 +1,43 @@
+<h1>
+    Home Page 
+</h1>
+
+<form action="/create_model/" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="hd" value="{{user.id}}">
+    Name : 
+    <input type="text" name="txt1" value="{{user.name}}">
+    <input type="submit" value="Click To Process">
+    <input type="submit" name="btnUpdate" value="Click To Update">
+</form>
+
+
+<table border="1">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Action
+        </th>
+
+    </tr>
+{% for val in data %}
+    <tr>
+        <td>
+            {{val.id}}
+        </td>
+        <td>
+            {{val.name}}
+        </td>
+        <td>
+            <a href="/delete_model/{{val.id}}">Delete</a>    
+            <a href="/update/{{val.id}}">Update</a>    
+        </td>
+    </tr>
+{% endfor %}
+
+</table>
